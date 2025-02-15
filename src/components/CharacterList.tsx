@@ -66,7 +66,7 @@ const CharacterList: React.FC = () => {
 			<ul>
 				{characters.map((character) => (
 					<li key={character.url}>
-						<a href={`/character/${character.url.split('/').filter(Boolean).pop()}`}>
+						<a href={`/my-vite-app/character/${character.url.split('/').filter(Boolean).pop()}`}>
 							{character.name}
 						</a>
 					</li>
