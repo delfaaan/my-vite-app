@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { fetchCharacters } from './services/api';
 
 const App: React.FC = () => {
 	const [name, setName] = useState<string>('');
@@ -6,8 +7,9 @@ const App: React.FC = () => {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await fetch('https://swapi.dev/api/people/1');
-				const data = await response.json();
+				const url = 'https://swapi.dev/api/people/1';
+				const data = await fetchCharacters(url);
+				
 				setName(data.name);
 			} catch (error) {
 				console.error('Error fetching data:', error);
