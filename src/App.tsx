@@ -1,29 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { fetchCharacters } from './services/api';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import CharacterList from './components/CharacterList';
 
 const App: React.FC = () => {
-	const [name, setName] = useState<string>('');
-
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const url = 'https://swapi.dev/api/people/1';
-				const data = await fetchCharacters(url);
-				
-				setName(data.name);
-			} catch (error) {
-				console.error('Error fetching data:', error);
-			}
-		};
-
-		fetchData();
-	}, []);
-
 	return (
-		<div>
-			<h1>Star Wars Character Name</h1>
-			<div id="name">{name}</div>
-		</div>
+		<Router>
+			<Routes>
+				<Route path='/my-vite-app/' element={<CharacterList />} />
+			</Routes>
+		</Router>
 	);
 };
 
